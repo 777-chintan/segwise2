@@ -32,7 +32,7 @@ const Main = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function DashboardLayout() {
+export default function DashboardLayout({ children }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -41,9 +41,7 @@ export default function DashboardLayout() {
 
       <Nav openNav={open} onCloseNav={() => setOpen(false)} />
 
-      <Main>
-        <Outlet />
-      </Main>
+      <Main>{children}</Main>
     </StyledRoot>
   );
 }

@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import ReactApexChart from 'react-apexcharts';
 // @mui
 import { useTheme, styled } from '@mui/material/styles';
-import { Card, CardHeader } from '@mui/material';
 // utils
 import { fNumber } from '../../../utils/formatNumber';
 // components
@@ -48,7 +47,7 @@ export default function AppCurrentVisits({ title, subheader, chartColors, chartD
   const chartOptions = useChart({
     colors: chartColors,
     labels: chartLabels,
-    stroke: { colors: [theme.palette.background.paper] },
+    stroke: { colors: [theme.palette.background.paper], width: 0.25 },
     legend: { floating: true, horizontalAlign: 'center' },
     dataLabels: { enabled: true, dropShadow: { enabled: false } },
     tooltip: {
@@ -66,12 +65,8 @@ export default function AppCurrentVisits({ title, subheader, chartColors, chartD
   });
 
   return (
-    <Card {...other}>
-      <CardHeader title={title} subheader={subheader} />
-
-      <StyledChartWrapper dir="ltr">
-        <ReactApexChart type="pie" series={chartSeries} options={chartOptions} height={280} />
-      </StyledChartWrapper>
-    </Card>
+    <StyledChartWrapper dir="ltr">
+      <ReactApexChart type="pie" series={chartSeries} options={chartOptions} height={300} />
+    </StyledChartWrapper>
   );
 }
